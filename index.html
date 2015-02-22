@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="stylesheet.css" />
+	<script src="jquery.min.js"></script>
+	<script src="jquery.transit.min.js"></script>
+	<meta charset="ISO-8859-1">
+	<title>3D Room</title>
+</head>
+<body>
+<span id="info">Scroll to zoom<br/>
+	Drag to rotate<br/>
+	Made by:MD.Sami</span>
+<div id="stage">
+
+		<div id="bulb">
+			<div class="string">
+			
+				<div id="the-lightbulb">
+					<div class="bulbsides-left"></div>
+					<div class="bulbsides-front"></div>
+					<div class="bulbsides-right"></div>
+					<div class="bulbsides-back"></div>
+					<div class="bulbsides-top"></div>
+					<div class="bulbsides-bottom"></div>
+				</div>
+				
+			</div>
+		</div>
+	
+	<div class="wall-left">LEFT</div>
+	<div class="wall-front tcenter">
+		<div class="center">
+			<span>No Signal</span>
+		</div>
+	</div>
+	<div class="wall-right">RIGHT</div>
+	<div class="wall-back">BACK</div>
+	<div class="wall-top">TOP</div>
+	<div class="wall-bottom">BOTTOM</div>
+	
+	
+	<div id="almirah">
+		<div class="almirah-left"></div>
+		<div class="almirah-front"></div>
+		<div class="almirah-right"></div>
+		<div class="almirah-back"></div>
+		<div class="almirah-top"></div>
+		<div class="almirah-bottom"></div>
+	</div>
+	
+	
+	<div id="table">
+	
+		<div class="plate-left"></div>
+		<div class="plate-front"></div>
+		<div class="plate-right"></div>
+		<div class="plate-back"></div>
+		<div class="plate-top"></div>
+		<div class="plate-bottom"></div>
+		
+		<div id="table-stand1">
+			<div class="tstand1-left"></div>
+			<div class="tstand1-front"></div>
+			<div class="tstand1-right"></div>
+			<div class="tstand1-back"></div>
+			<div class="tstand1-top"></div>
+			<div class="tstand1-bottom"></div>
+		</div>
+		<div id="table-stand2">
+			<div class="tstand2-left"></div>
+			<div class="tstand2-front"></div>
+			<div class="tstand2-right"></div>
+			<div class="tstand2-back"></div>
+			<div class="tstand2-top"></div>
+			<div class="tstand2-bottom"></div>
+		</div>
+		<div id="table-stand3">
+			<div class="tstand3-left"></div>
+			<div class="tstand3-front"></div>
+			<div class="tstand3-right"></div>
+			<div class="tstand3-back"></div>
+			<div class="tstand3-top"></div>
+			<div class="tstand3-bottom"></div>
+		</div>
+		<div id="table-stand4">
+			<div class="tstand4-left"></div>
+			<div class="tstand4-front"></div>
+			<div class="tstand4-right"></div>
+			<div class="tstand4-back"></div>
+			<div class="tstand4-top"></div>
+			<div class="tstand4-bottom"></div>
+		</div>
+
+	</div>
+	
+	
+	
+	
+	<div id="chair">
+	
+		<div class="chair-plate-upper"></div>
+		<div class="chair-plate-left"></div>
+		<div class="chair-plate-front"></div>
+		<div class="chair-plate-right"></div>
+		<div class="chair-plate-back"></div>
+		<div class="chair-plate-top"></div>
+		<div class="chair-plate-bottom"></div>
+		
+		<div id="chair-stand1">
+			<div class="cstand1-left"></div>
+			<div class="cstand1-front"></div>
+			<div class="cstand1-right"></div>
+			<div class="cstand1-back"></div>
+			<div class="cstand1-top"></div>
+			<div class="cstand1-bottom"></div>
+		</div>
+		<div id="chair-stand2">
+			<div class="cstand2-left"></div>
+			<div class="cstand2-front"></div>
+			<div class="cstand2-right"></div>
+			<div class="cstand2-back"></div>
+			<div class="cstand2-top"></div>
+			<div class="cstand2-bottom"></div>
+		</div>
+		<div id="chair-stand3">
+			<div class="cstand3-left"></div>
+			<div class="cstand3-front"></div>
+			<div class="cstand3-right"></div>
+			<div class="cstand3-back"></div>
+			<div class="cstand3-top"></div>
+			<div class="cstand3-bottom"></div>
+		</div>
+		<div id="chair-stand4">
+			<div class="cstand4-left"></div>
+			<div class="cstand4-front"></div>
+			<div class="cstand4-right"></div>
+			<div class="cstand4-back"></div>
+			<div class="cstand4-top"></div>
+			<div class="cstand4-bottom"></div>
+		</div>
+
+	</div>
+
+	
+	
+	
+</div>
+
+
+
+<script type="text/javascript">
+
+	$(function(){
+		
+		
+		var x = 0;
+		var y = 0;
+		var screenH = $(window).height();
+		var screenW = $(window).width();
+		$(window).on("mousedown",function(e){
+			x = e.pageX;
+			y = e.pageY;
+		});
+		$(window).on("mouseup",function(e){
+			x -= e.pageX;
+			y -= e.pageY;
+			$("#stage").css({
+				rotateX: "+=" + parseInt( (y/screenH * 90) + 10 ),
+				rotateY: "-=" + parseInt( (x/screenW * 90) + 10 )
+			});
+			
+			x = parseInt($("#stage").css('rotateX'));
+			y = parseInt($("#stage").css('rotateY'));
+		});
+		
+		
+		
+		function getInAndOut(e){
+		    var evt = window.event || e //equalize event object
+		    var delta = evt.detail? evt.detail*(-120) : evt.wheelDelta //check for detail first so Opera uses that instead of wheelDelta
+		    
+		    var zoom = parseInt( $("#stage").css("transform").split(",")[14] );
+	    	zoom += delta;
+	    	$("#stage").css({
+	    		"transform":"translateZ("+zoom+"px) rotateX("+x+"deg) rotateY("+y+"deg)"
+	    	});
+		}
+		
+		var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+		if (document.attachEvent) //if IE (and Opera depending on user setting)
+		    document.attachEvent("on"+mousewheelevt, getInAndOut)
+		else if (document.addEventListener) //WC3 browsers
+		    document.addEventListener(mousewheelevt, getInAndOut, false)
+
+		
+	});
+
+</script>
+
+</body>
+
+
+</html>

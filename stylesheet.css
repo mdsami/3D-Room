@@ -1,0 +1,957 @@
+@CHARSET "ISO-8859-1";
+
+
+html,body{
+	padding: 0;
+	margin:	0;
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	-webkit-perspective: 600px;
+	perspective: 600px;
+	background: black;
+}
+
+
+*{
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+		-webkit-user-select: none;  
+	  -moz-user-select: none;    
+	  -ms-user-select: none;      
+	  user-select: none;
+}
+
+
+
+.tcenter{
+	text-align-center;
+}
+
+.center{
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+
+
+#info{
+	position:absolute;
+	top: 10px;
+	left: 10px;
+	color:white;
+}
+
+
+#stage{
+	width: 650px;
+	height: 650px;
+	position:relative;
+	margin: 0 auto;
+	-webkit-transform: rotateX(3deg);
+	transform: rotateX(3deg);
+	-webkit-transition: all .8s;
+	transition: all .8s;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: 50% 50% -350px;
+	transform-origin: 50% 50% -350px;
+}
+
+	[class^=wall-]{
+		background: url("wall-x.png") repeat-x;
+		opacity: 0.6;
+		width: 650px;
+		height: 650px;
+		position: absolute;
+	 	border: 1px solid black;
+	 	padding: 16px;
+	 	margin: 0 auto;
+	 	-webkit-background-size: 100% auto;
+		background-size: 100% auto;
+		box-shadow: inset 0 0 132px rgba(0,0,0,1);
+	}
+	.wall-left{
+		-webkit-transform: rotateY(90deg);
+		transform: rotateY(90deg);
+		-webkit-transform-origin: 0% 50%;
+		transform-origin: 0% 50%;
+	}
+	.wall-right{
+		-webkit-transform: rotateY(-90deg);
+		transform: rotateY(-90deg);
+		-webkit-transform-origin: 100% 50%;
+		transform-origin: 100% 50%;
+	}
+	.wall-front{
+		-webkit-transform: translateZ(-650px);
+		transform: translateZ(-650px);
+	}
+	.wall-front > div{
+		display: inline-block;
+		width:200px;
+		height:150px;
+		box-shadow:0 0 10px rgba(0,0,0,0.7);
+		border:15px solid rgb(0,0,0);
+		background: url(tv.gif);
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.wall-front > div > span{
+		position: absolute;
+		left: 20px;
+		top: 20px;
+	}
+	.wall-back{
+		/*
+		 * cool as default
+		 */
+	}
+	.wall-top{
+		-webkit-transform: rotateX(-90deg);
+		transform:  rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+	}
+	.wall-bottom{
+		-webkit-transform: translateY(100%) rotateX(-90deg);
+		transform:  translateY(100%) rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		background: url("floor.jpg");
+	}
+
+
+
+
+#almirah{
+	width: 40px;
+	height: 250px;
+	position:absolute;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-510px) translateY(400px);
+	transform: translateZ(-510px) translateY(400px);
+}
+
+	[class^=almirah-]{
+		background: url(almirah-pattern.png);
+		position: absolute;
+	 	border: 1px solid black;
+	 	padding: 16px;
+	 	margin: 0 auto;
+	}
+	.almirah-left{
+		width: 140px;
+		height: 250px;
+		-webkit-transform: rotateY(90deg);
+		transform: rotateY(90deg);
+		-webkit-transform-origin: 0% 50%;
+		transform-origin: 0% 50%;
+		-webkit-box-shadow: 0 0 24px black;
+		box-shadow: 0 0 24px black;
+	}
+	.almirah-right{
+		width: 140px;
+		height: 250px;
+		-webkit-transform: translateX(-100px) rotateY(-90deg);
+		transform: translateX(-100px) rotateY(-90deg);
+		-webkit-transform-origin: 100% 50%;
+		transform-origin: 100% 50%;
+		background: url("almirah-front.png");
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.almirah-front{
+		width: 40px;
+		height: 250px;
+		-webkit-transform: translateZ(-140px);
+		transform: translateZ(-140px);
+	}
+	.almirah-back{
+		width: 40px;
+		height: 250px;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+	}
+	.almirah-top{
+		width: 40px;
+		height: 140px;
+		-webkit-transform: rotateX(-90deg);
+		transform:  rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+	}
+	.almirah-bottom{
+		width: 40px;
+		height: 140px;
+		-webkit-transform: translateY(250px) rotateX(-90deg);
+		transform:  translateY(250px) rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: 0 0 24px black;
+		box-shadow: 0 0 24px black;
+	}
+	
+	
+	
+#table{
+	width: 200px;
+	height: 10px;
+	position:absolute;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-210px) translateY(550px);
+	transform: translateZ(-210px) translateY(550px);
+}
+
+	[class^=plate-]{
+		background: url(almirah-pattern.png);
+		position: absolute;
+	 	border: 0px solid black;
+	 	margin: 0 auto;
+	}
+	.plate-left{
+		width: 150px;
+		height: 10px;
+		-webkit-transform: rotateY(90deg);
+		transform: rotateY(90deg);
+		-webkit-transform-origin: 0% 50%;
+		transform-origin: 0% 50%;
+		-webkit-box-shadow: 0 0 24px black;
+		box-shadow: 0 0 24px black;
+	}
+	.plate-right{
+		width: 150px;
+		height: 10px;
+		-webkit-transform: translateX(50px) rotateY(-90deg);
+		transform: translateX(50px) rotateY(-90deg);
+		-webkit-transform-origin: right center;
+		transform-origin: right center;
+		background: url("almirah-front.png");
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.plate-front{
+		width: 200px;
+		height: 10px;
+		-webkit-transform: translateZ(-150px);
+		transform: translateZ(-150px);
+	}
+	.plate-back{
+		width: 200px;
+		height: 10px;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+	}
+	.plate-top{
+		width: 200px;
+		height: 150px;
+		-webkit-transform: rotateX(-90deg);
+		transform:  rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+	}
+	.plate-bottom{
+		width: 200px;
+		height: 150px;
+		-webkit-transform: translateY(10px) rotateX(-90deg);
+		transform:  translateY(10px) rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: 20px 20px 24px rgba(0,0,0,0.7);
+		box-shadow: 20px 20px 24px rgba(0,0,0,0.7);
+	}
+	
+
+		#table-stand1{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(5px) translateY(-5px);
+			transform: rotateX(90deg) translateX(5px) translateY(-5px);
+		}
+		
+			[class^=tstand1-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.tstand1-left{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+				-webkit-box-shadow: 0 0 24px black;
+				box-shadow: 0 0 24px black;
+			}
+			.tstand1-right{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: translateX(-80px) rotateY(-90deg);
+				transform: translateX(-80px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.tstand1-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-90px);
+				transform: translateZ(-90px);
+			}
+			.tstand1-back{
+				width: 10px;
+				height: 10px;
+			}
+			.tstand1-top{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.tstand1-bottom{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#table-stand2{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(185px) translateY(-5px);
+			transform: rotateX(90deg) translateX(185px) translateY(-5px);
+		}
+		
+			[class^=tstand2-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.tstand2-left{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+				-webkit-box-shadow: 0 0 24px black;
+				box-shadow: 0 0 24px black;
+			}
+			.tstand2-right{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: translateX(-80px) rotateY(-90deg);
+				transform: translateX(-80px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.tstand2-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-90px);
+				transform: translateZ(-90px);
+			}
+			.tstand2-back{
+				width: 10px;
+				height: 10px;
+			}
+			.tstand2-top{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.tstand2-bottom{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#table-stand3{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(185px) translateY(-135px);
+			transform: rotateX(90deg) translateX(185px) translateY(-135px);
+		}
+		
+			[class^=tstand3-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.tstand3-left{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+			}
+			.tstand3-right{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: translateX(-80px) rotateY(-90deg);
+				transform: translateX(-80px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.tstand3-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-90px);
+				transform: translateZ(-90px);
+			}
+			.tstand3-back{
+				width: 10px;
+				height: 10px;
+			}
+			.tstand3-top{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.tstand3-bottom{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#table-stand4{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(5px) translateY(-135px);
+			transform: rotateX(90deg) translateX(5px) translateY(-135px);
+		}
+		
+			[class^=tstand4-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.tstand4-left{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+			}
+			.tstand4-right{
+				width: 90px;
+				height: 10px;
+				-webkit-transform: translateX(-80px) rotateY(-90deg);
+				transform: translateX(-80px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.tstand4-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-90px);
+				transform: translateZ(-90px);
+			}
+			.tstand4-back{
+				width: 10px;
+				height: 10px;
+			}
+			.tstand4-top{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.tstand4-bottom{
+				width: 10px;
+				height: 90px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+			
+			
+			
+	#chair{
+		width: 200px;
+		height: 10px;
+		position:absolute;
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		-webkit-transform: translateZ(-150px) translateX(250px) translateY(590px);
+		transform: translateZ(-150px) translateX(250px) translateY(590px);
+	}
+
+	[class^=chair-plate-]{
+		background: url(almirah-pattern.png);
+		position: absolute;
+	 	border: 0px solid black;
+	 	margin: 0 auto;
+	}
+	.chair-plate-left{
+		width: 80px;
+		height: 10px;
+		-webkit-transform: rotateY(90deg);
+		transform: rotateY(90deg);
+		-webkit-transform-origin: 0% 50%;
+		transform-origin: 0% 50%;
+		-webkit-box-shadow: 0 0 24px black;
+		box-shadow: 0 0 24px black;
+	}
+	.chair-plate-right{
+		width: 80px;
+		height: 10px;
+		-webkit-transform: translateX(0px) rotateY(-90deg);
+		transform: translateX(0px) rotateY(-90deg);
+		-webkit-transform-origin: right center;
+		transform-origin: right center;
+		background: url("almirah-front.png");
+		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
+	}
+	.chair-plate-front{
+		width: 80px;
+		height: 10px;
+		-webkit-transform: translateZ(-80px);
+		transform: translateZ(-80px);
+	}
+	.chair-plate-back{
+		width: 80px;
+		height: 10px;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.7);
+	}
+	.chair-plate-top{
+		width: 80px;
+		height: 80px;
+		-webkit-transform: rotateX(-90deg);
+		transform:  rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+		box-shadow: inset 0 0 24px rgba(0,0,0,0.5);
+	}
+	.chair-plate-upper{
+		width: 80px;
+		height: 80px;
+		-webkit-transform: rotateX(-190deg);
+		transform:  rotateX(-190deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+	}
+	.chair-plate-bottom{
+		width: 80px;
+		height: 80px;
+		-webkit-transform: translateY(10px) rotateX(-90deg);
+		transform:  translateY(10px) rotateX(-90deg);
+		-webkit-transform-origin: center top;
+		transform-origin: center top;
+		-webkit-box-shadow: 10px 20px 24px rgba(0,0,0,0.7);
+		box-shadow: 10px 20px 24px rgba(0,0,0,0.7);
+	}
+	
+
+		#chair-stand1{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(5px) translateY(-5px);
+			transform: rotateX(90deg) translateX(5px) translateY(-5px);
+		}
+		
+			[class^=cstand1-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.cstand1-left{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+				-webkit-box-shadow: 0 0 24px black;
+				box-shadow: 0 0 24px black;
+			}
+			.cstand1-right{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: translateX(-40px) rotateY(-90deg);
+				transform: translateX(-40px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.cstand1-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-50px);
+				transform: translateZ(-50px);
+			}
+			.cstand1-back{
+				width: 10px;
+				height: 10px;
+			}
+			.cstand1-top{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.cstand1-bottom{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#chair-stand2{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(65px) translateY(-5px);
+			transform: rotateX(90deg) translateX(65px) translateY(-5px);
+		}
+		
+			[class^=cstand2-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.cstand2-left{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+				-webkit-box-shadow: 0 0 24px black;
+				box-shadow: 0 0 24px black;
+			}
+			.cstand2-right{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: translateX(-40px) rotateY(-90deg);
+				transform: translateX(-40px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.cstand2-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-50px);
+				transform: translateZ(-50px);
+			}
+			.cstand2-back{
+				width: 10px;
+				height: 10px;
+			}
+			.cstand2-top{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.cstand2-bottom{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#chair-stand3{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(65px) translateY(-65px);
+			transform: rotateX(90deg) translateX(65px) translateY(-65px);
+		}
+		
+			[class^=cstand3-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.cstand3-left{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+			}
+			.cstand3-right{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: translateX(-40px) rotateY(-90deg);
+				transform: translateX(-40px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.cstand3-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-50px);
+				transform: translateZ(-50px);
+			}
+			.cstand3-back{
+				width: 10px;
+				height: 10px;
+			}
+			.cstand3-top{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.cstand3-bottom{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+		#chair-stand4{
+			width: 10px;
+			height: 10px;
+			position:absolute;
+			-webkit-transform-origin: center bottom;
+			transform-origin: center bottom;
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+			-webkit-transform: rotateX(90deg) translateX(5px) translateY(-65px);
+			transform: rotateX(90deg) translateX(5px) translateY(-65px);
+		}
+		
+			[class^=cstand4-]{
+				background: url(almirah-pattern.png);
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			}
+			.cstand4-left{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+			}
+			.cstand4-right{
+				width: 50px;
+				height: 10px;
+				-webkit-transform: translateX(-40px) rotateY(-90deg);
+				transform: translateX(-40px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				background: url("almirah-front.png");
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.cstand4-front{
+				width: 10px;
+				height: 10px;
+				-webkit-transform: translateZ(-50px);
+				transform: translateZ(-50px);
+			}
+			.cstand4-back{
+				width: 10px;
+				height: 10px;
+			}
+			.cstand4-top{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.cstand4-bottom{
+				width: 10px;
+				height: 50px;
+				-webkit-transform: translateY(10px) rotateX(-90deg);
+				transform:  translateY(10px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}	
+			
+	
+	
+	
+		
+	#bulb{
+		position:absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
+		-webkit-transform:translateZ(-400px);
+		transform: translateZ(-400px) translateY(-325px);
+	}
+		
+		#bulb > .string{
+			height: 100px;
+			width: 8px;
+			background: white;
+			position: relative;
+		}
+		
+			#the-lightbulb{
+				width: 60px;
+				height: 60px;
+				position:absolute;
+				top: 100%;
+				left: -28px;
+				transform: translateZ(28px);
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			[class^=bulbsides-]{
+				background: rgba(255,255,255,0.5);
+				box-shadow: 0 0 32px white; 
+				position: absolute;
+			 	border: 0px solid black;
+			 	margin: 0 auto;
+			 	width: 60px;
+				height: 60px;
+			}
+			.bulbsides-left{
+				-webkit-transform: rotateY(90deg);
+				transform: rotateY(90deg);
+				-webkit-transform-origin: 0% 50%;
+				transform-origin: 0% 50%;
+			}
+			.bulbsides-right{
+				-webkit-transform: translateX(0px) rotateY(-90deg);
+				transform: translateX(0px) rotateY(-90deg);
+				-webkit-transform-origin: right center;
+				transform-origin: right center;
+				-webkit-background-size: 100% 100%;
+				background-size: 100% 100%;
+			}
+			.bulbsides-front{
+				-webkit-transform: translateZ(-60px);
+				transform: translateZ(-60px);
+			}
+			.bulbsides-back{
+			}
+			.bulbsides-top{
+				-webkit-transform: rotateX(-90deg);
+				transform:  rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			.bulbsides-bottom{
+				-webkit-transform: translateY(60px) rotateX(-90deg);
+				transform:  translateY(60px) rotateX(-90deg);
+				-webkit-transform-origin: center top;
+				transform-origin: center top;
+			}
+			
+			
+			
